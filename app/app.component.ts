@@ -9,6 +9,7 @@ import { Meal } from './meal.model';
 
     <hr>
     <edit-meal [childSelectedMeal]="selectedMeal" (doneButtonClickedSender)="finishedEditing()"></edit-meal>
+    <new-meal (newMealSender)="addMeal($event)"></new-meal>
 
   </div>
   `
@@ -18,9 +19,9 @@ export class AppComponent {
   selectedMeal = null;
 
   masterMealList: Meal[] = [
-      new Meal('Chips', 3),
-      new Meal('Soup', 2),
-      new Meal('Broccoli', 1)
+      new Meal('Chips', "half bag", 200, 3),
+      new Meal('Soup', "two cups", 400, 2),
+      new Meal('Broccoli', "12oz", 120, 1)
     ];
 
 
