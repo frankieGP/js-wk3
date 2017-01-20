@@ -18,12 +18,7 @@ import { Meal } from './meal.model';
      <label>Enter Meal Calories:</label>
      <input #newCalorie>
    </div>
-    <label>Meal Calories:</label>
-    <select #newPriority>
-      <option [value]="1"> Low Calorie </option>
-      <option [value]="3"> High Calorie </option>
-    </select>
-        <button (click)="submitForm(newName.value,newDescription.value, newCalorie.value, newPriority.value)">Add</button>
+    <button (click)="submitForm(newName.value,newDescription.value, newCalorie.value); newDescription.value='';">Add</button>
   </div>
   `
 })
@@ -31,8 +26,8 @@ import { Meal } from './meal.model';
 export class NewMealComponent {
   @Output() newMealSender = new EventEmitter();
 
-  submitForm(name: string, description: string, calorie: number, priority: number) {
-    var newMealToAdd: Meal = new Meal(name, description, calorie, priority);
+  submitForm(name: string, description: string, calorie: number) {
+    var newMealToAdd: Meal = new Meal(name, description, calorie);
   }
 
 }

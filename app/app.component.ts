@@ -19,9 +19,9 @@ export class AppComponent {
   selectedMeal = null;
 
   masterMealList: Meal[] = [
-      new Meal('Chips', "half bag", 200, 3),
-      new Meal('Soup', "two cups", 400, 2),
-      new Meal('Broccoli', "12oz", 120, 1)
+      new Meal('Chips', "half bag", 200),
+      new Meal('Soup', "two cups", 400),
+      new Meal('Broccoli', "12oz", 120)
     ];
 
 
@@ -33,7 +33,9 @@ editMeal(clickedMeal) {
 finishedEditing() {
   this.selectedMeal = null;
 }
-
+addMeal(newMealFromChild: Meal) {
+  this.masterMealList.push(newMealFromChild);
+}
 
 
 
