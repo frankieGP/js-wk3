@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
-
+import { Meal } from './meal.model';
 @Component({
   selector: 'app-root',
   template: `
   <div class="container">
     <h1>MEAL TRACKER</h1>
-    <ul>
-      <li [class]="priorityColor(currentMeal)" *ngFor="let currentMeal of meals">{{currentMeal.description}} <button (click)="editMeal(currentMeal)">Edit!</button>
-      </li>
-    </ul>
+    <task-list [childMealList]="masterMealList" (clickSender)="editTask($event)"></task-list>
+
     <hr>
   <div *ngIf="selectedMeal">                  <h3>{{selectedMeal.description}}</h3>
      <p>Meal Complete? {{selectedMeal.done}}</p>
@@ -30,11 +28,13 @@ import { Component } from '@angular/core';
 export class AppComponent {
   selectedMeal = null;
 
-meals: Meal[] = [
-    new Meal('Chips', 3),
-    new Meal('Soup', 2),
-    new Meal('Broccoli', 1)
-  ];
+  masterMealList: Meal[] = [
+      new Meal('Chips', 3),
+      new Meal('Soup', 2),
+      new Meal('Broccoli', 1)
+    ];
+
+
 
 
 editMeal(clickedMeal) {
@@ -43,22 +43,9 @@ editMeal(clickedMeal) {
 finishedEditing() {
   this.selectedMeal = null;
 }
-priorityColor(currentMeal){
-  if (currentMeal.priority === 3){
-    return "bg-danger";
-  } else if (currentMeal.priority === 2) {
-    return  "bg-warning";
-  } else {
-    return "bg-info";
-  }
-}
 
 
 
 
-}
 
-export class Meal {
-  public done: boolean = false;
-  constructor(public description: string, public priority: number) {   }
 }
