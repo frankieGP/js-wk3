@@ -12,10 +12,12 @@ import { Meal } from './meal.model';
 </select>
 
 <ul>
-  <li (click)="isDone(currentMeal)" *ngFor="let currentMeal of childMealList | completeness:filterByCompleteness"><h3>Meal</h3><p>Name: {{currentMeal.name}}</p><p>Description: {{currentMeal.description}}</p> <p>Calories: {{currentMeal.calorie}}</p>
+<div *ngFor="let meal of meals | calories:selectCalories">
 
-  <input *ngIf="currentMeal.done === true" type="checkbox" checked (click)="toggleDone(currentMeal, false)"/>
-<input *ngIf="currentMeal.done === false" type="checkbox" (click)="toggleDone(currentMeal, true)"/>
+  <li (click)="isDone(currentMeal)" *ngFor="let currentMeal of childMealList | calories:filterByCalories">
+
+  <input *ngIf="currentMeal.calorie >= 501" type="checkbox" checked (click)="toggleDone(currentMeal, false)"/>
+<input *ngIf="currentMeal.calorie === false" type="checkbox" (click)="toggleDone(currentMeal, true)"/>
   <button (click)="editButtonHasBeenClicked(currentMeal)">Edit!</button>
   </li>
 </ul>
@@ -25,10 +27,10 @@ import { Meal } from './meal.model';
 export class MealListComponent {
   @Input() childMealList: Meal[];
   @Output() clickSender = new EventEmitter();
-  filterByCompleteness: string = "allMeals";
+  filterByCalories: string = "allMeals";
 
   onChange(optionFromMenu) {
-    this.filterByCompleteness = optionFromMenu;
+    this.filterByCalories = optionFromMenu;
   }
   editButtonHasBeenClicked(mealToEdit: Meal) {
     this.clickSender.emit(mealToEdit);
@@ -36,7 +38,7 @@ export class MealListComponent {
 
 
 
-  toggleDone(clickedMeal: Meal, setCompleteness: boolean) {
-     clickedMeal.done = setCompleteness;
-   }
 }
+
+
+<h3>Meal</h3><p>Name: {{currentMeal.name}}</p><p>Description: {{currentMeal.description}}</p> <p>Calories: {{currentMeal.calorie}}</p>
