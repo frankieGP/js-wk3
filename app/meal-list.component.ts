@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Meal } from './meal.model';
+
 @Component({
   selector: 'meal-list',
   template: `
@@ -26,13 +27,14 @@ export class MealListComponent {
   @Output() clickSender = new EventEmitter();
   filterByCompleteness: string = "allMeals";
 
+  onChange(optionFromMenu) {
+    this.filterByCompleteness = optionFromMenu;
+  }
   editButtonHasBeenClicked(mealToEdit: Meal) {
     this.clickSender.emit(mealToEdit);
   }
 
-  onChange(optionFromMenu) {
-    this.filterByCompleteness = optionFromMenu;
-  }
+
 
   toggleDone(clickedMeal: Meal, setCompleteness: boolean) {
      clickedMeal.done = setCompleteness;

@@ -14,11 +14,9 @@ import { Meal } from './meal.model';
      <input #newDescription>
    </div>
    <div>
-   <div>
      <label>Enter Meal Calories:</label>
      <input #newCalorie>
-   </div>
-    <button (click)="submitForm(newName.value,newDescription.value, newCalorie.value); newDescription.value='';">Add</button>
+    <button (click)="submitForm(newName.value, newDescription.value, newCalorie.value); newName.value=''; newDescription.value=''; newCalorie.value='';">Add</button>
   </div>
   `
 })
@@ -28,6 +26,8 @@ export class NewMealComponent {
 
   submitForm(name: string, description: string, calorie: number) {
     var newMealToAdd: Meal = new Meal(name, description, calorie);
+    this.newMealSender.emit(newMealToAdd);
+
   }
 
 }
