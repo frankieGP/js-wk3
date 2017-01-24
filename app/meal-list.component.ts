@@ -12,7 +12,7 @@ import { Meal } from './meal.model';
 </select>
 
 
-<div *ngFor="let meal of meals | calories:filterByCalories">
+<div *ngFor="let currentMeal of childMealList | calories:filterByCalories">
   <h3>Meal</h3>
     <ul>
       <li>Name: {{currentMeal.name}}</li>
