@@ -26,6 +26,13 @@ export class CaloriesPipe implements PipeTransform {
         }
       }
       return output;
+    // } else if (desiredCalories === "allMeals") {
+    //   for (var i = 0; i < input.length; i++) {
+    //     if (input[i].calorie ??? ) {
+    //       output.push(input[i]);
+    //     }
+    //   }
+    //   return output;
     } else {
       return input;
     }

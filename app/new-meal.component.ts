@@ -7,7 +7,7 @@ import { Meal } from './meal.model';
   <h1>New Meal</h1>
   <div>
     <label>Enter Meal Name:</label>
-    <input #newMeal>
+    <input #newName>
   </div>
    <div>
      <label>Enter Meal Description:</label>
@@ -16,8 +16,9 @@ import { Meal } from './meal.model';
    <div>
      <label>Enter Meal Calories:</label>
      <input #newCalorie>
-    <button (click)="submitForm(newName.value, newDescription.value, newCalorie.value); newName.value=''; newDescription.value=''; newCalorie.value='';">Add</button>
+         <button (click)="submitForm (newName.value, newDescription.value, newCalorie.value)">Add</button>
   </div>
+
   `
 })
 

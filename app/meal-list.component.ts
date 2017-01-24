@@ -11,16 +11,16 @@ import { Meal } from './meal.model';
   <option value="lowMeals">Low Calorie Meals</option>
 </select>
 
-<ul>
-<div *ngFor="let meal of meals | calories:selectCalories">
 
-  <li (click)="isDone(currentMeal)" *ngFor="let currentMeal of childMealList | calories:filterByCalories">
-
-  <input *ngIf="currentMeal.calorie >= 501" type="checkbox" checked (click)="toggleDone(currentMeal, false)"/>
-<input *ngIf="currentMeal.calorie === false" type="checkbox" (click)="toggleDone(currentMeal, true)"/>
+<div *ngFor="let meal of meals | calories:filterByCalories">
+  <h3>Meal</h3>
+    <ul>
+      <li>Name: {{currentMeal.name}}</li>
+      <li>Description: {{currentMeal.description}}</li>
+      <li>Calories: {{currentMeal.calorie}}</li>
+    </ul>
   <button (click)="editButtonHasBeenClicked(currentMeal)">Edit!</button>
-  </li>
-</ul>
+</div>
   `
 })
 
@@ -39,6 +39,3 @@ export class MealListComponent {
 
 
 }
-
-
-<h3>Meal</h3><p>Name: {{currentMeal.name}}</p><p>Description: {{currentMeal.description}}</p> <p>Calories: {{currentMeal.calorie}}</p>
