@@ -19,7 +19,7 @@ export class AppComponent {
   selectedMeal = null;
 
   masterMealList: Meal[] = [
-      new Meal('Chips', "half bag", 200),
+      new Meal('Chips', "half bag", 600),
       new Meal('Soup', "two cups", 400),
       new Meal('Broccoli', "12oz", 120)
     ];
