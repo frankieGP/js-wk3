@@ -16,7 +16,7 @@ import { Meal } from './meal.model';
    <div>
      <label>Enter Meal Calories:</label>
      <input #newCalorie>
-         <button (click)="submitForm (newName.value, newDescription.value, newCalorie.value)">Add</button>
+         <button (click)="submitForm (newName.value, newDescription.value, newCalorie.value); newName.value = ''; newDescription.value = ''; newCalorie.value = '' ">Add</button>
   </div>
 
   `
